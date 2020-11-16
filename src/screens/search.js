@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 const listenNotesApiUrl = 'https://listen-api.listennotes.com/api/v2';
 
-const Search = () => {
+const Search = ({setSelectedPodcast}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [podcasts, setPodcasts] = useState([]);
-  // pagination
 
   const getPodcasts = async (e) => {
     e.preventDefault();
@@ -22,7 +21,9 @@ const Search = () => {
   }
 
   const renderPodcasts = () => (
-    podcasts.map(podcast => <li key={podcast.id}>{podcast.title_original}</li>)
+    podcasts.map(({id, title_original}) => <li onClick={() => setSelectedPodcast(id)} key={id}>
+      {title_original}
+    </li>)
   )
 
   return (
