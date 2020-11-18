@@ -6,7 +6,9 @@ import Podcast from './screens/podcast';
 const App = () => {
   const [selectedPodcast, setSelectedPodcast] = useState();
   return (
-    selectedPodcast ? <Podcast /> : <Search setSelectedPodcast={setSelectedPodcast} />
+    selectedPodcast
+      ? <Podcast id={selectedPodcast} />
+      : <Search setSelectedPodcast={setSelectedPodcast} />
   )
 }
 
