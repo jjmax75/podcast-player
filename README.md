@@ -12,4 +12,6 @@
 
 [Powered by Listen Notes logo](https://www.dropbox.com/sh/259hp0metmemgbs/AACsZHZa1xhq7OkrycHmBK27a?dl=0)
 
+[Deployment](https://create-react-app.dev/docs/deployment/)
+
 Listen Notes API is human approved, think this is a deal breaker as they could reject students and kill project
