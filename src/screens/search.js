@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
+import { SearchForm } from '../components/search-form';
+import { ResultList } from '../components/results/list';
+
 const listenNotesApiUrl = 'https://listen-api.listennotes.com/api/v2';
 
-const Search = ({setSelectedPodcast}) => {
-  const [searchTerm, setSearchTerm] = useState('');
+const Search = ({ setSelectedPodcast }) => {
   const [podcasts, setPodcasts] = useState([]);
 
   const getPodcasts = async (e) => {
@@ -14,33 +16,25 @@ const Search = ({setSelectedPodcast}) => {
       }
     };
 
-    const result = await fetch(`${listenNotesApiUrl}/search?q=${searchTerm}&sort_by_date=0&type=podcast`, options);
+    const result = await fetch(`${listenNotesApiUrl}/search?q=${e.target.value}&sort_by_date=0&type=podcast`, options);
     const parsed = await result.json();
     
     setPodcasts(parsed.results);
   }
 
-  const renderPodcasts = () => (
-    podcasts.map(({id, title_original}) => <li onClick={() => setSelectedPodcast(id)} key={id}>
-      {title_original}
-    </li>)
-  )
+  const handleKeyPress = e => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      getPodcasts(e);
+    }
+  }
 
   return (
     <>
-      <h1>Search for a podcast</h1>
-      <form>
-        <input
-          type='text'
-          placeholder='Search for a podcast'
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-        />
-        <button onClick={getPodcasts}>Search</button>
-      </form>
-      <ul>
-        {renderPodcasts()}
-      </ul>
+      <h3>Welcome!</h3>
+      <h1>Explore top podcasts</h1>
+      <SearchForm handleKeyPress={handleKeyPress} />
+      <ResultList setSelectedPodcast={setSelectedPodcast} podcasts={podcasts} />
     </>
   )
 }
