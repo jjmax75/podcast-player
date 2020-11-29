@@ -1,0 +1,31 @@
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.main img {
+  width: 50%;
+}
+
+.progress-bar {
+  width: 100%;
+}
+
+.podcast-list {
+  margin: 0;
+  padding: 0;
+}
+
+.podcast-list-item {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin: 20px 0;
+  display: flex;
+  cursor: pointer;
+}
+
+.back-button {
+  margin: 20px 0;
+  width: 50px;
+}

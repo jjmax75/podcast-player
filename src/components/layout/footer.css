@@ -1,3 +1,9 @@
 .footer {
   background-color: gray;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer img {
+  width: 300px;
 }

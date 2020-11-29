@@ -1,3 +1,5 @@
+import './search.css';
+
 import React, { useState } from 'react';
 
 import { SearchForm } from '../components/search-form';
@@ -29,14 +31,20 @@ const Search = ({ setSelectedPodcast }) => {
     }
   }
 
-  return (
-    <>
-      <h3>Welcome!</h3>
-      <h1>Explore top podcasts</h1>
-      <SearchForm handleKeyPress={handleKeyPress} />
-      <ResultList setSelectedPodcast={setSelectedPodcast} podcasts={podcasts} />
-    </>
-  )
+  return (!podcasts.length
+    ? <>
+        <h3>Welcome!</h3>
+        <h1>Explore top podcasts</h1>
+        <SearchForm handleKeyPress={handleKeyPress} />
+      </>
+    : <>
+        <div className="info">
+          <button onClick={() => setPodcasts([])}>Back</button>
+          <h1>Results ({podcasts.length})</h1>
+        </div>
+        <ResultList setSelectedPodcast={setSelectedPodcast} podcasts={podcasts} />
+      </>
+  ) 
 }
 
 export default Search;

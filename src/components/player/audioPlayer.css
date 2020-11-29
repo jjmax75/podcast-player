@@ -1,0 +1,30 @@
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.play-button {
+  width: 100px;
+  border-radius: 50%;
+  height: 100px;
+  background-color: black;
+  color: white;
+  margin: 20px;
+}
+
+.shuffle-button {
+  width: 66px;
+  border-radius: 50%;
+  height: 66px;
+  background-color: white;
+  color: black;
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

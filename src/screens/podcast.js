@@ -1,10 +1,14 @@
+import './podcast.css';
+
 import React, { useEffect, useState } from 'react';
+
+import AudioPlayer from '../components/player/audioPlayer';
 
 const listenNotesApiUrl = 'https://listen-api.listennotes.com/api/v2';
 
 const Podcast = ({ id, setSelectedPodcast }) => {
   const [podcastDetails, setPodcastDetails] = useState({});
-  const [audio, setAudio] = useState();
+  const [podcast, setPodcast] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,29 +28,26 @@ const Podcast = ({ id, setSelectedPodcast }) => {
   }, [id]);
 
   const renderEpisodeList = () => (
-    podcastDetails.episodes.map(({ audio, id, title }) => (
-      <li key={id} onClick={() => setAudio(audio)}>{title}</li>
+    podcastDetails.episodes.map((podcast) => (
+      <li key={podcast.id} className='podcast-list-item' onClick={() => setPodcast(podcast)}>{podcast.title}</li>
     ))
   )
 
-
   return (
     <>
-      <button onClick={() => setSelectedPodcast(null)}>Back</button>
+      <button className="back-button" onClick={() => setSelectedPodcast(null)}>
+        Back
+      </button>
+      <div className='main'>
+        <img src={podcastDetails?.image} />
+        <AudioPlayer podcast={podcast} />
+      </div>
       { podcastDetails.episodes ?
-        <ul>
+        <ul className='podcast-list'>
           {renderEpisodeList()}
         </ul>
       :
         <span>The podcast list is loading</span>
-      }
-      { audio &&
-        <audio
-          controls
-          src={audio}>
-            Your browser does not support the
-            <code>audio</code> element.
-        </audio>
       }
     </>
   )

@@ -1,0 +1,13 @@
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info h1 {
+  display: inline;
+}
+
+.info button {
+  margin-right: 20px;
+}

@@ -4,6 +4,6 @@ import React from 'react';
 
 export const Header = () => {
   return (
-    <header className='header'>Podcast Player</header>
+    <header className='header'>Seashell</header>
   );
 };
