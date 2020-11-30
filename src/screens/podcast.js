@@ -2,7 +2,7 @@ import './podcast.css';
 
 import React, { useEffect, useState } from 'react';
 
-import AudioPlayer from '../components/player/audioPlayer';
+import Player from '../components/player';
 
 const listenNotesApiUrl = 'https://listen-api.listennotes.com/api/v2';
 
@@ -40,7 +40,7 @@ const Podcast = ({ id, setSelectedPodcast }) => {
       </button>
       <div className='main'>
         <img src={podcastDetails?.image} />
-        <AudioPlayer podcast={podcast} />
+        <Player podcast={podcast} />
       </div>
       { podcastDetails.episodes ?
         <ul className='podcast-list'>
